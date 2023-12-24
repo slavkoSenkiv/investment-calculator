@@ -1,6 +1,14 @@
+import InputZone from "./components/InputZone"
+import ForecTable from "./components/ForecTable"
+
 function App() {
   return (
-    <h1>React Investment Calculator</h1>
+    <>
+    <InputZone />
+
+    <ForecTable />
+    </>
+
   )
 }
 

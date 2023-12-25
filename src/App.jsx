@@ -47,7 +47,7 @@ function App() {
         objectData={objectData}
       />
 
-      <ForecTable />
+      <ForecTable annualData={annualData} />
     </>
   );
 }

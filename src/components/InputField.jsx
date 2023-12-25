@@ -1,14 +1,16 @@
-export default function InputField({ labelText, step, handleInputChange, name, objectData }) {
+export default function InputField({ labelText, step, handlePropertyUpdate, name, userInput }) {
+
   return (
     <div>
       <label>{labelText}</label>
       <input 
         type="number" 
-        step={step}
-        onChange={handleInputChange}
         name={name}
-        defaultValue={objectData[name]}
-        min="0">
+        defaultValue={userInput[name]}
+        onChange={(event) => handlePropertyUpdate(name, event.target.value)}
+        step={step}
+        min="0"
+        required>
       </input>
     </div>
   );

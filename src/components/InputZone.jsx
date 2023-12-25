@@ -1,11 +1,6 @@
 import InputField from "./InputField";
 
-export default function InputZone( { handlePropertyUpdate, objectData }) {
-
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    handlePropertyUpdate(name, value);
-  }
+export default function InputZone( { handlePropertyUpdate, userInput }) {
 
   return (
     <div id="user-input">
@@ -15,15 +10,15 @@ export default function InputZone( { handlePropertyUpdate, objectData }) {
         <InputField 
           labelText={"Initial Investment"} 
           name={"initialInvestment"} 
-          objectData={objectData}
-          handleInputChange={handleInputChange}
+          userInput={userInput}
+          handlePropertyUpdate={handlePropertyUpdate}
           step={5000} />
 
         <InputField 
           labelText={"Annual Investment"} 
           name={"annualInvestment"} 
-          objectData={objectData}
-          handleInputChange={handleInputChange}
+          userInput={userInput}
+          handlePropertyUpdate={handlePropertyUpdate}
           step={100} />
 
       </div>
@@ -33,15 +28,15 @@ export default function InputZone( { handlePropertyUpdate, objectData }) {
         <InputField 
           labelText={"Expected Return"} 
           name={"expectedReturn"}
-          objectData={objectData}
-          handleInputChange={handleInputChange}
+          userInput={userInput}
+          handlePropertyUpdate={handlePropertyUpdate}
           step={0.5} />
 
         <InputField 
           labelText={"Duration"} 
           name={"duration"} 
-          objectData={objectData}
-          handleInputChange={handleInputChange}
+          userInput={userInput}
+          handlePropertyUpdate={handlePropertyUpdate}
           step={2} />
       </div>
 

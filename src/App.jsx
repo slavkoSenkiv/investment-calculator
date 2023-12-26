@@ -18,14 +18,6 @@ function App() {
     setUserInput((previousInput) => {
       return { ...previousInput, [propertyName]: +value };
     });
-
-    /* unction handleSetAnnualData(){
-      setAnnualData((prevAnnualData) => {
-        return calculateInvestmentResults({
-          ...prevAnnualData,
-          [propertyName]: value,
-        });
-      }); */
   }
 
   return (

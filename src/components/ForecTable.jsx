@@ -1,15 +1,12 @@
 import ForecRow from "./ForecRow";
-/* import { useState } from "react";
- */import { calculateInvestmentResults } from "../util/investment";
+import { calculateInvestmentResults } from "../util/investment";
 
 export default function ForecTable({ userInput }) {
-
-/*   const [resultsData, setresultsData] = useState(calculateInvestmentResults(userInput));
- */  
-const resultsData = calculateInvestmentResults(userInput);
-
-  console.log("userInput", userInput);
-  console.log("resultsData", resultsData);
+  const resultsData = calculateInvestmentResults(userInput);
+  const initialInvestment =
+    resultsData[0].valueEndOfYear -
+    resultsData[0].interest -
+    resultsData[0].annualInvestment;
 
   return (
     <table id="result">
@@ -24,8 +21,19 @@ const resultsData = calculateInvestmentResults(userInput);
       </thead>
       <tbody>
         {resultsData.map((yearData) => {
-          const totalInterest = yearData.valueEndOfYear - yearData.annualInvestment * yearData.year;
-          return <ForecRow key={yearData.year} yearData={yearData} totalInterest={totalInterest} />
+          const totalInterest =
+            yearData.valueEndOfYear -
+            yearData.annualInvestment * yearData.year -
+            initialInvestment;
+          const totalAmountInvested = yearData.valueEndOfYear - totalInterest;
+          return (
+            <ForecRow
+              key={yearData.year}
+              yearData={yearData}
+              totalInterest={totalInterest}
+              totalAmountInvested={totalAmountInvested}
+            />
+          );
         })}
       </tbody>
     </table>

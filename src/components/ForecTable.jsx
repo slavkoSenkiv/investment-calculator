@@ -1,21 +1,15 @@
 import ForecRow from "./ForecRow";
-import { useState } from "react";
+/* import { useState } from "react";
+ */import { calculateInvestmentResults } from "../util/investment";
 
 export default function ForecTable({ userInput }) {
 
-  console.log(userInput);
+/*   const [resultsData, setresultsData] = useState(calculateInvestmentResults(userInput));
+ */  
+const resultsData = calculateInvestmentResults(userInput);
 
-  const [annualData, setAnnualData] = useState(calculateInvestmentResults(userInput));
-
-  /* ???? */
-/*   function handleSetAnnualData(){
-    setAnnualData((prevAnnualData) => {
-      return calculateInvestmentResults({
-        ...prevAnnualData,
-        [propertyName]: value,
-      });
-    });
-  } */
+  console.log("userInput", userInput);
+  console.log("resultsData", resultsData);
 
   return (
     <table id="result">
@@ -29,9 +23,10 @@ export default function ForecTable({ userInput }) {
         </tr>
       </thead>
       <tbody>
-        {annualData.map((yearObj, index) => (
-          <ForecRow key={index} rowData={yearObj} />
-        ))}
+        {resultsData.map((yearData) => {
+          const totalInterest = yearData.valueEndOfYear - yearData.annualInvestment * yearData.year;
+          return <ForecRow key={yearData.year} yearData={yearData} totalInterest={totalInterest} />
+        })}
       </tbody>
     </table>
   );

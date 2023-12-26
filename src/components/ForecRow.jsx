@@ -1,12 +1,12 @@
 import { formatter } from "../util/investment"
-export default function ForecRow ( { rowData } ) {
+export default function ForecRow ( { yearData, totalInterest} ) {
   return (
     <tr>
-      <td>{rowData.year}</td> 
-      <td>{formatter.format(rowData.annualInvestment)}</td>
-      <td>{formatter.format(rowData.interest)}</td>
-      <td>{formatter.format(rowData.totalInterest)}</td>
-      <td>{formatter.format(rowData.valueEndOfYear)}</td>
+      <td>{yearData.year}</td> 
+      <td>{formatter.format(yearData.annualInvestment)}</td>
+      <td>{formatter.format(yearData.interest)}</td>
+      <td>{formatter.format(totalInterest)}</td>
+      <td>{formatter.format(yearData.valueEndOfYear)}</td>
     </tr>
   )
 }

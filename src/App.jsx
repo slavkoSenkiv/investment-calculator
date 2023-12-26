@@ -13,6 +13,8 @@ const defaultInput = {
 function App() {
   const [userInput, setUserInput] = useState(defaultInput);
 
+  const inputIsValid = userInput.duration >= 1;
+
   function handlePropertyUpdate(propertyName, value) {
 
     setUserInput((previousInput) => {
@@ -26,8 +28,8 @@ function App() {
         handlePropertyUpdate={handlePropertyUpdate}
         userInput={userInput}
       />
-
-      <ForecTable userInput={userInput} />
+      { !inputIsValid && <p>Please enter duration more than 0 </p> }
+      { inputIsValid && <ForecTable userInput={userInput} /> }
     </>
   );
 }
